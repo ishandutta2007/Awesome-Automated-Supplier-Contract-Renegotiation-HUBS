@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a13" />
+      <stop offset="45%" stop-color="#0c1427" />
+      <stop offset="100%" stop-color="#050811" />
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.2" />
+    </linearGradient>
+
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.2" />
+    </linearGradient>
+
+    <!-- Card Background Gradient -->
+    <linearGradient id="cardBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Glow & Shadow Filters -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="12" flood-color="#000000" flood-opacity="0.7" />
+    </filter>
+
+    <!-- Subtle Grid Pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.45" />
+      <circle cx="40" cy="40" r="1" fill="#38bdf8" fill-opacity="0.25" />
+    </pattern>
+
+    <style>
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(0.5deg); }
+      }
+      @keyframes floatReverse {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(8px) rotate(-0.5deg); }
+      }
+      @keyframes pulseBeam {
+        0%, 100% { opacity: 0.25; stroke-dashoffset: 0; }
+        50% { opacity: 0.75; stroke-dashoffset: -30; }
+      }
+      @keyframes pulseGlow {
+        0%, 100% { opacity: 0.3; transform: scale(0.98); }
+        50% { opacity: 0.65; transform: scale(1.02); }
+      }
+      @keyframes radarSweep {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes dotBlink {
+        0%, 100% { opacity: 0.3; r: 3; }
+        50% { opacity: 1; r: 5; }
+      }
+      .anim-float-1 { animation: floatSlow 6s ease-in-out infinite; transform-origin: center; }
+      .anim-float-2 { animation: floatReverse 7s ease-in-out infinite; transform-origin: center; }
+      .anim-pulse { animation: pulseBeam 4s linear infinite; }
+      .anim-glow { animation: pulseGlow 5s ease-in-out infinite; transform-origin: 600px 190px; }
+      .anim-dot { animation: dotBlink 3s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="380" fill="url(#bgGrad)" />
+  <rect width="1200" height="380" fill="url(#grid)" />
+
+  <!-- DYNAMIC BACKGROUND LAYER (Strictly background & sides, away from center text) -->
+  <g class="anim-glow">
+    <ellipse cx="600" cy="190" rx="420" ry="140" fill="#38bdf8" fill-opacity="0.06" filter="url(#glow)" />
+    <ellipse cx="250" cy="100" rx="200" ry="80" fill="#818cf8" fill-opacity="0.07" filter="url(#glow)" />
+    <ellipse cx="950" cy="270" rx="220" ry="90" fill="#c084fc" fill-opacity="0.06" filter="url(#glow)" />
+  </g>
+
+  <!-- Animated Data Flows / Flow Lines in Far Background -->
+  <g opacity="0.6">
+    <!-- Left negotiation flow line -->
+    <path class="anim-pulse" d="M 30 190 Q 180 120 330 190 T 520 190" fill="none" stroke="url(#primaryGrad)" stroke-width="2" stroke-dasharray="6,8" />
+    <!-- Right negotiation flow line -->
+    <path class="anim-pulse" d="M 680 190 Q 850 260 1000 190 T 1170 190" fill="none" stroke="url(#primaryGrad)" stroke-width="2" stroke-dasharray="6,8" />
+    <!-- Ambient connection arcs -->
+    <path d="M 80 80 Q 200 40 320 90" fill="none" stroke="#38bdf8" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="4,4" />
+    <path d="M 880 290 Q 1000 340 1120 300" fill="none" stroke="#10b981" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Left Dynamic Pill Card (Floating safely in top-left margin) -->
+  <g class="anim-float-1" transform="translate(45, 42)">
+    <rect width="210" height="64" rx="14" fill="url(#cardBg)" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.5" filter="url(#shadow)" />
+    <circle cx="32" cy="32" r="12" fill="#0284c7" fill-opacity="0.2" />
+    <circle cx="32" cy="32" r="5" fill="#38bdf8" />
+    <text x="56" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#38bdf8" letter-spacing="0.5">AUTONOMOUS AGENTS</text>
+    <text x="56" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">AI Sourcing &amp; Redlining</text>
+  </g>
+
+  <!-- Left Lower Dynamic Pill (Bottom-left margin) -->
+  <g class="anim-float-2" transform="translate(60, 275)">
+    <rect width="220" height="60" rx="14" fill="url(#cardBg)" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.4" filter="url(#shadow)" />
+    <circle cx="30" cy="30" r="10" fill="#059669" fill-opacity="0.25" />
+    <circle class="anim-dot" cx="30" cy="30" r="4" fill="#34d399" />
+    <text x="54" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#34d399">RENEGOTIATION TRIGGERS</text>
+    <text x="54" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">Market Index &amp; Spend Signals</text>
+  </g>
+
+  <!-- Right Dynamic Pill Card (Top-right margin) -->
+  <g class="anim-float-2" transform="translate(935, 42)">
+    <rect width="220" height="64" rx="14" fill="url(#cardBg)" stroke="#818cf8" stroke-width="1.2" stroke-opacity="0.5" filter="url(#shadow)" />
+    <circle cx="32" cy="32" r="12" fill="#6366f1" fill-opacity="0.2" />
+    <circle cx="32" cy="32" r="5" fill="#a5b4fc" />
+    <text x="56" y="27" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#a5b4fc" letter-spacing="0.5">CONTRACT INTELLIGENCE</text>
+    <text x="56" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">Spend Linkage &amp; Compliance</text>
+  </g>
+
+  <!-- Right Lower Dynamic Pill (Bottom-right margin) -->
+  <g class="anim-float-1" transform="translate(920, 275)">
+    <rect width="235" height="60" rx="14" fill="url(#cardBg)" stroke="#c084fc" stroke-width="1.2" stroke-opacity="0.4" filter="url(#shadow)" />
+    <circle cx="30" cy="30" r="10" fill="#9333ea" fill-opacity="0.25" />
+    <circle class="anim-dot" cx="30" cy="30" r="4" fill="#e879f9" />
+    <text x="54" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#e879f9">PORTFOLIO OPTIMIZATION</text>
+    <text x="54" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" fill="#94a3b8">Up to 40% Leakage Reduction</text>
+  </g>
+
+  <!-- FOREGROUND LAYER: TITLE & SUBTITLE (Guaranteed 100% visible, centered, uncluttered) -->
+  <g id="foregroundContent" filter="url(#shadow)">
+    <!-- Category Badge -->
+    <g transform="translate(460, 48)">
+      <rect width="280" height="30" rx="15" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2" />
+      <circle cx="20" cy="15" r="4" fill="#38bdf8" />
+      <text x="32" y="20" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700" fill="#c7d2fe" letter-spacing="1.5">CURATED ECOSYSTEM HUBS</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="600" y="132" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" fill="#ffffff" letter-spacing="-0.5">
+      AUTOMATED SUPPLIER CONTRACT
+    </text>
+    <text x="600" y="174" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="34" font-weight="900" fill="url(#primaryGrad)" letter-spacing="1">
+      RENEGOTIATION HUBS
+    </text>
+
+    <!-- Subtitle -->
+    <text x="600" y="222" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="15" font-weight="500" fill="#cbd5e1" letter-spacing="0.3">
+      Autonomous Negotiations • AI Procurement • Contract Analytics &amp; Supplier Intelligence
+    </text>
+
+    <!-- Interactive / Feature Tags Row -->
+    <g transform="translate(290, 252)">
+      <!-- Tag 1 -->
+      <g transform="translate(0, 0)">
+        <rect width="180" height="32" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="90" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8">🤖 Autonomous Bots</text>
+      </g>
+      <!-- Tag 2 -->
+      <g transform="translate(195, 0)">
+        <rect width="210" height="32" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="105" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#a78bfa">📊 Spend Leakage Control</text>
+      </g>
+      <!-- Tag 3 -->
+      <g transform="translate(420, 0)">
+        <rect width="200" height="32" rx="16" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="100" y="20" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#34d399">⚡ Self-Hosted Open CLM</text>
+      </g>
+    </g>
+
+    <!-- Bottom border accent -->
+    <line x1="200" y1="340" x2="1000" y2="340" stroke="url(#primaryGrad)" stroke-width="1.5" stroke-opacity="0.4" />
+  </g>
+</svg>
